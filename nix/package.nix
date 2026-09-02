@@ -153,6 +153,8 @@ stdenv'.mkDerivation (finalAttrs: {
   patches = [
     # std::memcpy used without <cstring>; newer libstdc++ no longer provides it transitively.
     ./patches/0001-crypto-types-include-cstring.patch
+    # Stray include of a YAML backend that is not selected (ryml is).
+    ./patches/0002-selected-preset-json-drop-yaml-cpp-include.patch
   ];
 
   postPatch = ''

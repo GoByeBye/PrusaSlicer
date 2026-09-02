@@ -1,0 +1,14 @@
+Drop an unused yaml-cpp include. Nothing in the file uses yaml-cpp and the
+default SLIC3R_YAML=ryml configuration does not link it, so the header is not
+available when building against system libraries.
+
+--- a/src/slic3r-shared/src/Slic3r/Biz/Config/SelectedPresetJson.cpp	1970-01-01 00:00:01.000000000 +0000
++++ b/src/slic3r-shared/src/Slic3r/Biz/Config/SelectedPresetJson.cpp	2026-09-02 20:02:39.750590242 +0000
+@@ -4,7 +4,6 @@
+ #include "Slic3r/Biz/Expr/Parser.hpp"
+ #include "Slic3r/Biz/Expr/Eval.hpp"
+ #include <nlohmann/json.hpp>
+-#include <yaml-cpp/exceptions.h>
+ 
+ namespace Slic3r::Domain::Expr {
+ 
