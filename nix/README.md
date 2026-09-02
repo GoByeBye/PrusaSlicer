@@ -57,8 +57,10 @@ exceptions live next to this file:
   in `deps/+LibBGCode`) and `nlohmann_json` (`deps/+json/json.patch` plus
   implicit conversions disabled, as in the vendored build).
 
-Two small source adjustments are made in `postPatch`: wxWidgets is searched in
-module mode because the nixpkgs build ships no CMake package config, and
-`libdeflate::libdeflate_shared` is used because nixpkgs does not build the
-static library. The STEP plugin is installed to `lib/prusa-slicer/` and its
-absolute path is compiled in.
+Three small source patches live in `patches/` (a missing `<cstring>`
+include, an unused yaml-cpp include, and an overload ambiguity clang rejects);
+all three are candidates for upstream. Two further adjustments are made in
+`postPatch`: wxWidgets is searched in module mode because the nixpkgs build
+ships no CMake package config, and `libdeflate::libdeflate_shared` is used
+because nixpkgs does not build the static library. The STEP plugin is
+installed to `lib/prusa-slicer/` and its absolute path is compiled in.
