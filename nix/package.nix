@@ -150,6 +150,11 @@ stdenv'.mkDerivation (finalAttrs: {
   inherit version;
   src = src';
 
+  patches = [
+    # std::memcpy used without <cstring>; newer libstdc++ no longer provides it transitively.
+    ./patches/0001-crypto-types-include-cstring.patch
+  ];
+
   postPatch = ''
     # wxWidgets from nixpkgs is built with autotools and ships no CMake
     # package config, so search it in module mode (wx-config). The bundled

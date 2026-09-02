@@ -1,0 +1,14 @@
+Add the <cstring> include that std::memcpy needs; recent libstdc++ headers
+no longer pull it in transitively, so the file fails to compile with
+GCC 15 / clang 21 based toolchains.
+
+--- a/src/slic3r-biz-crypto/src/Slic3r/Biz/Crypto/Types.cpp	1970-01-01 00:00:01.000000000 +0000
++++ b/src/slic3r-biz-crypto/src/Slic3r/Biz/Crypto/Types.cpp	2026-09-02 19:34:51.130387575 +0000
+@@ -1,6 +1,7 @@
+ #include "Slic3r/Biz/Crypto/Types.hpp"
+ #include "Slic3r/Log.hpp"
+ #include <ranges>
++#include <cstring>
+ 
+ #include <boost/nowide/cstdio.hpp>
+ 
