@@ -155,6 +155,8 @@ stdenv'.mkDerivation (finalAttrs: {
     ./patches/0001-crypto-types-include-cstring.patch
     # Stray include of a YAML backend that is not selected (ryml is).
     ./patches/0002-selected-preset-json-drop-yaml-cpp-include.patch
+    # Overload ambiguity that clang rejects and GCC accepts.
+    ./patches/0003-button-attach-unambiguous.patch
   ];
 
   postPatch = ''
